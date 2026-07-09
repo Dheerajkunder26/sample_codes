@@ -33,26 +33,26 @@ typedef struct temp
     short int max_range;
     float reading;
 
-} temp_t;
+} __attribute__((packed)) temp_t;
 
 typedef struct humidity
 {
     float calibration;
     float reading;
-} humidity_t;
+}__attribute__((packed)) humidity_t;
 
 typedef struct pressure
 {
     short int altitude;
     float reading;
-} pressure_t;
+}__attribute__((packed)) pressure_t;
 
 typedef union sensordata
 {
     temp_t temperature;
     humidity_t humidity;
     pressure_t pressure;
-} sensordata_t;
+}__attribute__((packed)) sensordata_t;
 
 typedef struct sensor_info
 {
@@ -61,7 +61,7 @@ typedef struct sensor_info
     sensor_t type;
     sensordata_t data;
     status_t status;
-} sensor_info_t;
+}__attribute__((packed)) sensor_info_t;
 
 void init_sensor(sensor_info_t *sensors, unsigned char *count, unsigned char max_sensors);
 void read_sensor_data(sensor_info_t *sensor);
@@ -70,6 +70,7 @@ void display_sensors(sensor_info_t *sensors, unsigned char count);
 // Main function with sample usage
 int main()
 {
+    
     sensor_info_t sensors[10] = {0}; // Static array for max 10 sensors
     unsigned char count = 0;
     char choice;
