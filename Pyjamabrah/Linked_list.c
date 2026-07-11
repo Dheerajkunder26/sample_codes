@@ -137,6 +137,20 @@ int add_end(int data)
 
 }
 
+int search (int data)
+{
+    for (node_t *cursor =__head;cursor != NULL; cursor= cursor->next_node)
+    {
+        if(cursor->data == data)
+        {
+            printf("Found the data %d \n", data);
+            return 1;
+        }
+    } 
+    return 0;
+
+}
+
 int delete(int data)
 {
     node_t *head;
@@ -165,11 +179,45 @@ int delete(int data)
 
 void travers(void)
 {
+    printf("Linked List : "); 
     for (node_t *cursor =__head;cursor != NULL; cursor= cursor->next_node)
     {
-        printf(" %d ",cursor->data);
+        printf("  %d ",cursor->data);
     } 
  printf("\n"); 
+}
+
+int insert(int key, int data)
+{
+    node_t *key_node,*new_node;
+    for (key_node =__head;key_node != NULL; key_node= key_node->next_node)
+    {
+        if(key_node->data == key)
+        {
+            break;
+        }
+    } 
+    if(!key_node)
+    {
+        printf("Insertion Failed: Key not found \n");
+        return -1;
+    }
+     new_node = malloc(sizeof(node_t));
+
+     /*
+    Throw an error if memory allocation failed
+    */
+     if(!new_node)
+    {
+        printf(" Insertion Failed : Memory Allocation Failed..!\n");
+        return -2;
+    }
+    new_node->data = data;
+    new_node->next_node = key_node->next_node;
+    key_node->next_node = new_node;
+
+    return 1;
+
 }
 
 int main()
@@ -179,8 +227,11 @@ int main()
     add_end(131);
     add_end(121);
     travers();
+    search(121);
 
     delete(121);
+    travers();
+    insert(101,121);
     travers();
     return 0;
 
