@@ -49,6 +49,6 @@ Traverse
  
 
 - Result
-    - Preorder : :A:  :B:  :D:  :H:  :E:  :C:  :F:  :G: 
+    - Preorder  : :A:  :B:  :D:  :H:  :E:  :C:  :F:  :G: 
     - Postorder : :G:  :F:  :C:  :E:  :H:  :D:  :B:  :A: 
-    - Inorder : :H:  :D:  :B:  :E:  :A:  :F:  :C:  :G: 
+    - Inorder   : :H:  :D:  :B:  :E:  :A:  :F:  :C:  :G: 
